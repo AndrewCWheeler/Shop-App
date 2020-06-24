@@ -1,0 +1,29 @@
+@model Ingredient
+
+
+
+
+<div class="col-sm-6 text-right">
+                <a href="/dashboard">Dashboard</a> | <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <form asp-action="AddProduct" asp-controller="Home" method="post">
+                    <div class="form-group row">
+                        <span class="col-sm-8 offset-sm-4 text-danger" asp-validation-for="IngredientName"></span>
+                        <label asp-for="IngredientName" class="col-sm-4"></label>
+                        <input asp-for="IngredientName" class="col-sm-8 form-control">
+                    </div>
+                    <div class="form-group row">
+                        <span class="col-sm-8 offset-sm-4 text-danger" asp-validation-for="Discription"></span>
+                        <label asp-for="Discription" class="col-sm-4"></label>
+                        <input asp-for="Discription" class="col-sm-8 form-control">
+                    </div>
+
+                    <div class="form-group row">
+                        <input type="submit" value="Submit!" class="col-sm-4 offset-sm-4 btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>

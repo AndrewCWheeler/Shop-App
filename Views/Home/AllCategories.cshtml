@@ -1,0 +1,45 @@
+@model Category
+
+<div class="col-sm-6 text-right">
+                <a href="/dashboard">Dashboard</a> | <a href="/logout">Log Out</a>
+            </div>
+
+
+
+ <div class="row">
+            <div class="col-sm-10 offset-sm-1">
+                <table class="table">
+                    <thead>
+                        <th>Category Name</th>
+                        <th>Discription</th>
+                        <th>Categories</th>
+                        <th>Action(s)</th>
+                    </thead>
+                    <tbody>
+                        @foreach(Categorys Category  in Model )
+                        {
+                            <tr>
+                                <td><a href="/weddings/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                                <td>@wedding.Date.Value.ToString("MMM dd yyyy")</td>
+                                <td>@wedding.GuestsAttending.Count</td>
+                                <td>
+                                    @if(wedding.UserId==Model.LoggedUser.UserId)
+                                    {
+                                        <a href="/weddings/@wedding.WeddingId/edit"><button class="btn btn-primary">Edit</button></a> <a href="/weddings/@wedding.WeddingId/delete"><button class="btn btn-danger">Delete</button></a>
+                                    }
+                                    else if(wedding.GuestsAttending.Any(r => r.UserId == Model.LoggedUser.UserId))
+                                    {
+                                        <a href="/weddings/@wedding.WeddingId/unrsvp"><button class="btn btn-secondary">Un-RSVP</button></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/weddings/@wedding.WeddingId/rsvp"><button class="btn btn-primary">RSVP</button></a>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
