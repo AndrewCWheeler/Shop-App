@@ -10,9 +10,11 @@ namespace ShopApp.Models
 
         public List<Ingredient> AllIngredients { get; set; }
 
-        public List<Item> AllItems { get; set; }
 
         public List<Product> AllProducts { get; set; }
+
+
+        public List<Category> AllCatigories { get; set; }
 
     }
 }

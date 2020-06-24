@@ -110,9 +110,8 @@ namespace ShopApp.Controllers
                 .Include(i => i.Products)
                 .ToList(),
 
-                AllItems = dbContext.Items
-                .Include(p => p.Product)
-                .Include(s => s.Store)
+                AllCatigories = dbContext.Categories
+                .Include(p => p.Products)
                 .ToList(),
 
                 AllProducts = dbContext.Products

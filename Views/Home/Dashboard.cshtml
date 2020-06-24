@@ -20,8 +20,8 @@
             </div>
         <div class="row">
             <div class="col-sm-10">
-                    @foreach(Store item in Model.AllStores){
-                        <p><a href="stores/@item.StoreId">@item.StoreName in @item.Location </p>
+                    @foreach(Store store in Model.AllStores){
+                        <p><a href="stores/@store.StoreId">@store.StoreName in @store.Location </p>
                     }
             </div>
         </div>
