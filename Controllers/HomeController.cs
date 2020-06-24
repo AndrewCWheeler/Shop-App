@@ -100,7 +100,7 @@ namespace ShopApp.Controllers
                 return RedirectToAction("LogReg");
             }
 
-            DashboardWrapper WMod = new DashboardWrapper()
+            DashboardWrapper DashWrap = new DashboardWrapper()
             {
                 AllStores = dbContext.Stores
                 .Include(i => i.Items)
@@ -113,9 +113,6 @@ namespace ShopApp.Controllers
                 AllItems = dbContext.Items
                 .Include(p => p.Product)
                 .Include(s => s.Store)
-                .Include(c => c.Categories)
-                .Include(p => p.ThisItemsPrices)
-                .ThenInclude(u => u.User)
                 .ToList(),
 
                 AllProducts = dbContext.Products
@@ -127,7 +124,7 @@ namespace ShopApp.Controllers
                     .FirstOrDefault(u => u.UserId == (int)LoggedId)
             };
 
-            return View("Dashboard", WMod);
+            return View("Dashboard", DashWrap);
         }
 
 
@@ -172,7 +169,15 @@ namespace ShopApp.Controllers
             {
                 return RedirectToAction("LogReg");
             }
-            return View("AllStores");
+
+            AllStoresWrapper ASWrap = new AllStoresWrapper()
+            {
+                AllStores = dbContext.Stores
+                .ToList(),
+
+            };
+
+            return View("AllStores", ASWrap);
         }
 
         [HttpGet("stores/{StoreId}")]
@@ -227,7 +232,15 @@ namespace ShopApp.Controllers
             {
                 return RedirectToAction("LogReg");
             }
-            return View("AllProducts");
+
+            AllProductsWrapper APWrap = new AllProductsWrapper()
+            {
+                AllProducts = dbContext.Products
+                .ToList(),
+
+            };
+
+            return View("AllProducts", APWrap);
         }
 
         [HttpGet("products/{ProductId}")]
@@ -283,7 +296,15 @@ namespace ShopApp.Controllers
             {
                 return RedirectToAction("LogReg");
             }
-            return View("AllIngredients");
+
+            AllIngredientsWrapper AIWrap = new AllIngredientsWrapper()
+            {
+                AllIngredients = dbContext.Ingredients
+                .ToList(),
+
+            };
+
+            return View("AllIngredients", AIWrap);
         }
 
         [HttpGet("ingredients/{IngredientId}")]
@@ -338,7 +359,15 @@ namespace ShopApp.Controllers
             {
                 return RedirectToAction("LogReg");
             }
-            return View("AllCategories");
+
+            AllCategoriesWrapper ACWrap = new AllCategoriesWrapper()
+            {
+                AllCategories = dbContext.Categories
+                .ToList(),
+
+            };
+
+            return View("AllCategories", ACWrap);
         }
 
         [HttpGet("categories/{CategoryId}")]
